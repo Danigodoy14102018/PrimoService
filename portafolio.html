@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Los Primos Services - Portafolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    .fade-card { transition: transform .3s, box-shadow .3s, opacity .3s; }
+    .fade-card:hover { transform: scale(1.04); box-shadow: 0 10px 25px rgba(0,0,0,0.15); opacity: 0.95; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white shadow-lg">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold">Los Primos Services</h1>
+      <nav class="space-x-6">
+        <a href="index.html" class="hover:text-yellow-300">Inicio</a>
+        <a href="servicios.html" class="hover:text-yellow-300">Servicios</a>
+        <a href="portafolio.html" class="hover:text-yellow-300">Portafolio</a>
+        <a href="contacto.html" class="hover:text-yellow-300">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Portafolio -->
+  <section class="bg-gray-100 py-16">
+    <h2 class="text-4xl font-bold text-center mb-10">Nuestro Portafolio</h2>
+
+    <!-- Filtros -->
+    <div class="flex justify-center gap-4 mb-10">
+      <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 filter-btn" data-filter="all">Todos</button>
+      <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 filter-btn" data-filter="instagram">Instagram</button>
+      <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 filter-btn" data-filter="facebook">Facebook Ads</button>
+      <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 filter-btn" data-filter="branding">Branding</button>
+    </div>
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6" id="portfolio-grid">
+
+      <div class="bg-white shadow rounded-xl overflow-hidden fade-card" data-category="instagram">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">Campaña Instagram</h3>
+          <p class="text-sm text-gray-600">Aumento de seguidores en 3 meses.</p>
+        </div>
+      </div>
+
+      <div class="bg-white shadow rounded-xl overflow-hidden fade-card" data-category="facebook">
+        <img src="https://tecnosoluciones.com/wp-content/uploads/2023/05/publicidad-digital-con-facebook-ads.png" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">Gestión Facebook Ads</h3>
+          <p class="text-sm text-gray-600">Campaña con ROI del 300%.</p>
+        </div>
+      </div>
+
+      <div class="bg-white shadow rounded-xl overflow-hidden fade-card" data-category="branding">
+        <img src="https://ccq.ec/wp-content/uploads/2024/05/240422_Foto_BP_TottoMusic-scaled.jpg" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">Branding Influencer</h3>
+          <p class="text-sm text-gray-600">Estrategia de marca personal y colaboraciones.</p>
+        </div>
+      </div>
+
+      <div class="bg-white shadow rounded-xl overflow-hidden fade-card" data-category="instagram">
+        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">Contenido para Reels</h3>
+          <p class="text-sm text-gray-600">Más de 2M de visualizaciones.</p>
+        </div>
+      </div>
+
+      <div class="bg-white shadow rounded-xl overflow-hidden fade-card" data-category="facebook">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">Optimización de Anuncios</h3>
+          <p class="text-sm text-gray-600">Costos por clic reducidos un 60%.</p>
+        </div>
+      </div>
+
+      <div class="bg-white shadow rounded-xl overflow-hidden fade-card" data-category="branding">
+        <img src="https://images.unsplash.com/photo-1532614338840-ab30cf10ed36" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">Diseño de Identidad Visual</h3>
+          <p class="text-sm text-gray-600">Rebranding completo para influencer fitness.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white py-6 text-center">
+    <p>&copy; 2025 Los Primos Services | Todos los derechos reservados</p>
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('#portfolio-grid div[data-category]');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        buttons.forEach(b => b.classList.remove('bg-blue-600', 'text-white'));
+        buttons.forEach(b => b.classList.add('bg-gray-200'));
+        btn.classList.add('bg-blue-600', 'text-white');
+
+        items.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
